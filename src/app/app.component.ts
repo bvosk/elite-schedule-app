@@ -1,3 +1,4 @@
+import { TournamentsPage } from './../pages/tournaments/tournaments';
 import { MyTeamsPage } from './../pages/my-teams/my-teams';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -21,7 +22,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'My Teams', component: MyTeamsPage }
+      { title: 'Home', component: MyTeamsPage },
+      { title: 'Tournaments', component: TournamentsPage }
     ];
 
   }

@@ -13,10 +13,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class TeamDetailPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  team: any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeamDetailPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.team = this.navParams.data;
   }
 
 }
