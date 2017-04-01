@@ -1,3 +1,4 @@
+import { MyTeamsPage } from './../my-teams/my-teams';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -17,4 +18,7 @@ export class TeamHomePage {
     this.team = this.navParams.data;
   }
 
+  goHome() {
+    this.navCtrl.popToRoot(MyTeamsPage);
+  }
 }
