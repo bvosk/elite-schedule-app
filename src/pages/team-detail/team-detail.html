@@ -39,19 +39,21 @@
   </ion-card>
   <ion-list>
     <ion-item *ngFor="let game of games" (click)="gameClicked($event, game)" >
-      <ion-row>
-        <ion-col width-25>
-          <p>{{ game.time | date:'M/d/yy' }}</p>
-          <p>{{ game.time | date:'shortTime'}}</p>
-        </ion-col>
-        <ion-col width-50>
-          <p>{{ game.homeAway + ' ' + game.opponent | slice:0:15 }}</p>
-          <p>{{ game.location  | slice:0:15 }}</p>
-        </ion-col>
-        <ion-col width-25>
-          <ion-badge [color]="getScoreDisplayBadgeColor(game)">{{ game.scoreDisplay }}</ion-badge>
-        </ion-col>
-      </ion-row>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3>
+            <p>{{ game.time | date:'M/d/yy' }}</p>
+            <p>{{ game.time | date:'shortTime'}}</p>
+          </ion-col>
+          <ion-col width-5>
+            <p>{{ game.homeAway + ' ' + game.opponent | slice:0:15 }}</p>
+            <p>{{ game.location  | slice:0:15 }}</p>
+          </ion-col>
+          <ion-col col-4 text-right>
+            <ion-badge [color]="getScoreDisplayBadgeColor(game)">{{ game.scoreDisplay }}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
   </ion-list>
 </ion-content>
