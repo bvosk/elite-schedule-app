@@ -18,6 +18,7 @@ import * as _ from 'lodash';
 export class TeamDetailPage {
   games: any[];
   team: any;
+  teamStanding: any;
   private tournamentData: any;
 
   constructor(public navCtrl: NavController,
@@ -43,6 +44,7 @@ export class TeamDetailPage {
                     }
                   })
                   .value();
+    this.teamStanding = _.find(this.tournamentData.standings, { 'teamId': this.team.id });
   }
 
   getScoreDisplay(isTeam1, team1Score, team2Score) {

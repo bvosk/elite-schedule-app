@@ -10,8 +10,11 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let team of teams" (click)="itemTapped($event, team)">
+    <ion-item-group *ngFor="let division of teams">
+      <ion-item-divider color="secondary">{{ division.divisionName }}</ion-item-divider>
+      <button ion-item *ngFor="let team of division.divisionTeams" (click)="itemTapped($event, team)">
       {{ team.name }}
-    </button>
+      </button>
+    </ion-item-group>
   </ion-list>
 </ion-content>

@@ -3,9 +3,34 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-content *ngIf="teamStanding">
+      <ion-row>
+        <ion-col>
+          <h2>Record: {{teamStanding.wins}}-{{teamStanding.losses}}</h2>
+          <p>Coach: {{team.coach}}</p>
+        </ion-col>
+        <ion-col>
+          <!--Placeholder-->
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
   <ion-list>
     <ion-item *ngFor="let game of games" (click)="gameClicked($event, game)" >
-      {{ game.opponent }}
+      <ion-row>
+        <ion-col width-30>
+          <p>{{ game.time | date:'M/d/yy' }}</p>
+          <p>{{ game.time | date:'shortTime' }}</p>
+        </ion-col>
+        <ion-col width-50>
+          <p>{{ game.homeAway }} {{ game.opponent }}</p>
+          <p>{{ game.location }}</p>
+        </ion-col>
+        <ion-col width-20>
+          <p>{{ game.scoreDisplay }}</p>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>
