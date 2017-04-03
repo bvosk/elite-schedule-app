@@ -13,7 +13,7 @@
         <ion-col width-50 text-right>
           <button ion-button small outline icon-left color="secondary" (click)="toggleFollow()" *ngIf="!isFollowing">
             <ion-icon name="star"></ion-icon>
-            Add favorite
+            Follow
           </button>
           <button ion-button small icon-left color="secondary" (click)="toggleFollow()" *ngIf="isFollowing">
             <ion-icon name="star"></ion-icon>
@@ -42,11 +42,11 @@
       <ion-row>
         <ion-col width-25>
           <p>{{ game.time | date:'M/d/yy' }}</p>
-          <p>{{ game.time | date:'shortTime' }}</p>
+          <p>{{ game.time | date:'shortTime'}}</p>
         </ion-col>
         <ion-col width-50>
-          <p>{{ game.homeAway }} {{ game.opponent }}</p>
-          <p>{{ game.location }}</p>
+          <p>{{ game.homeAway + ' ' + game.opponent | slice:0:15 }}</p>
+          <p>{{ game.location  | slice:0:15 }}</p>
         </ion-col>
         <ion-col width-25>
           <ion-badge [color]="getScoreDisplayBadgeColor(game)">{{ game.scoreDisplay }}</ion-badge>
