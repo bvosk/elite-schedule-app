@@ -1,3 +1,4 @@
+import { UserSettings } from './../../shared/user-settings.service';
 import { TeamHomePage } from './../team-home/team-home';
 import { EliteApi } from './../../shared/elite-api.service';
 import { TournamentsPage } from './../tournaments/tournaments';
@@ -8,22 +9,16 @@ import { Component } from '@angular/core';
   templateUrl: 'my-teams.html'
 })
 export class MyTeamsPage {
-  favorites = [
-    {
-        team: { id: 6182, name: 'HC Elite 7th', coach: 'Michelotti' },
-        tournamentId: '89e13aa2-ba6d-4f55-9cc2-61eba6172c63',
-        tournamentName: 'March Madness Tournament'
-    },
-    {
-        team: { id: 805, name: 'HC Elite', coach: 'Michelotti' },
-        tournamentId: '98c6857e-b0d1-4295-b89e-2d95a45437f2',
-        tournamentName: 'Holiday Hoops Challenge'
-    }
-  ];
+  favorites = [];
 
   constructor(private navCtrl: NavController,
               private loadingController: LoadingController,
-              private eliteApi: EliteApi) {}
+              private eliteApi: EliteApi,
+              private userSettings: UserSettings) {}
+
+  ionViewDidEnter() {
+    this.favorites = this.userSettings.getAllFavorites();
+  }
 
   favoriteTapped($event, favorite) {
     let loader = this.loadingController.create({

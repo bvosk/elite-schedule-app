@@ -12,6 +12,7 @@ import { TeamHomePage } from './../pages/team-home/team-home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicStorageModule } from "@ionic/storage/es2015";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StandingsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: "Followed_Teams"
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

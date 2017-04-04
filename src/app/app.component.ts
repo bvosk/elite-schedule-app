@@ -1,3 +1,4 @@
+import { UserSettings } from './../shared/user-settings.service';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -12,6 +13,7 @@ import { EliteApi } from '../shared/shared';
   templateUrl: 'app.html',
   providers: [
     EliteApi,
+    UserSettings,
     HttpModule
   ]
 })

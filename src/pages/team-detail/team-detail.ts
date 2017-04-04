@@ -1,3 +1,4 @@
+import { UserSettings } from './../../shared/user-settings.service';
 import { GamePage } from './../game/game';
 import { EliteApi } from './../../shared/elite-api.service';
 import { Component } from '@angular/core';
@@ -29,6 +30,7 @@ export class TeamDetailPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private eliteApi: EliteApi,
+              private userSettings: UserSettings,
               private alertController: AlertController,
               private toastController: ToastController) {}
 
@@ -53,6 +55,7 @@ export class TeamDetailPage {
                   .value();
     this.allGames = this.games;
     this.teamStanding = _.find(this.tournamentData.standings, { 'teamId': this.team.id });
+    this.userSettings.isFavoriteTeam(this.team.id).then(value => this.isFollowing = value);
   }
 
   getScoreDisplay(isTeam1, team1Score, team2Score) {
@@ -98,7 +101,7 @@ export class TeamDetailPage {
             text: 'Yes',
             handler: () => {
               this.isFollowing = false;
-              // Todo: Persist data
+              this.userSettings.unfavoriteTeam(this.team);
 
               let toast = this.toastController.create({
                 message: 'You have unfollowed this team.',
@@ -114,7 +117,10 @@ export class TeamDetailPage {
       confirm.present();
     } else {
       this.isFollowing = true;
-      // Todo: Persist data
+      this.userSettings.favoriteTeam(
+        this.team,
+        this.tournamentData.tournament.id,
+        this.tournamentData.tournament.name);
 
       let toast = this.toastController.create({
         message: 'You are now following this team.',
